@@ -22,6 +22,4 @@ function sum(elements) {
     return sum
 }
 
-console.log(sum(["cat", "dog", "horse"]))
-
 module.exports = sum;
