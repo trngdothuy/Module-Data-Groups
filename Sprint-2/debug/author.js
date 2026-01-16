@@ -11,6 +11,15 @@ const author = {
   alive: true,
 };
 
-for (const value of author) {
-  console.log(value);
+for (const value in author) {
+  console.log(author[value]);
 }
+
+// Prediction:
+// I think value on line 15 will be undefined, it should be value.value 
+
+// In fact:
+// TypeError: author is not iterable
+
+// It should be 
+// console.log(author[value]);
