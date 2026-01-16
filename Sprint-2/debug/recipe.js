@@ -12,4 +12,9 @@ const recipe = {
 
 console.log(`${recipe.title} serves ${recipe.serves}
   ingredients:
-${recipe}`);
+${recipe.ingredients.join("\n")}`);
+
+// Prediction: 
+// I think on line 15 it should be ${recipe.ingredients.join("\n")}
+
+// Because from 'recipe' we should find access ingredients and add "\n" between each item in the array, which is "\n"
