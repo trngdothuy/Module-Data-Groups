@@ -25,5 +25,3 @@ function parseQueryString(queryString) {
 }
 
 module.exports = parseQueryString;
-
-console.log(parseQueryString("equation=x=z&y"))
