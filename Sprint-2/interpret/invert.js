@@ -38,7 +38,7 @@ module.exports = invert;
 // Answer: {1: a, 2: b}
 
 // c) What does Object.entries return? Why is it needed in this program?
-// Answer: It returns an array from the object. IT helps manipulate the data easier.
+// Answer: It returns an array from the object. IT helps manipulate the data easier and to loop through an object.
 
 // d) Explain why the current return value is different from the target output
 // Answer: Because we use dot notation here. Instead of its value, the key will be inserted exactly as "key".
