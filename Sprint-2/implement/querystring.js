@@ -4,8 +4,6 @@ function parseQueryString(queryString) {
     return queryParams;
   }
 
-  console.log(queryString.indexOf("=") != queryString.lastIndexOf("="))
-
   if (queryString.indexOf("=") != queryString.lastIndexOf("=") && queryString.lastIndexOf("=") > queryString.indexOf("&")) {
     const keyValuePairs = queryString.split("&");
 
