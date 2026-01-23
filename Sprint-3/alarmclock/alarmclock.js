@@ -18,16 +18,15 @@ function setAlarm() {
 
   document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(input)}`
 
-  // When one second passes, Then the "Time Remaining" title should decrement by 1 second
-
-  setInterval(() => {
+  const interval = setInterval(() => {
     console.log(timeFormated(timeRemaining - 1))
 
-    // Given the alarm is set with a time of 00:00, the alarm sound play continuously
+    // Time = 00:00, alarm sound play continuously
     if (timeRemaining === 0) {
     playAlarm();
-    // break
+    clearInterval(interval)
   } else {
+    // 1 second passes, "Time Remaining" decrement by 1
     document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(timeRemaining -= 1)}`
   }
   }, 1000)
