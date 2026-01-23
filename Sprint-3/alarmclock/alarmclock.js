@@ -1,4 +1,22 @@
-function setAlarm() {}
+function timeFormated(seconds) {
+  function pad(num) {
+  return num.toString().padStart(2, "0");
+  }
+
+  const remainingSeconds = seconds % 60;
+  const totalMinutes = (seconds - remainingSeconds) / 60;
+  const remainingMinutes = totalMinutes % 60;
+  const totalHours = (totalMinutes - remainingMinutes) / 60;
+
+  return `${pad(totalHours)}:${pad(remainingMinutes)}:${pad(remainingSeconds)}`;
+}
+
+function setAlarm() {
+  
+  const input = document.getElementById("alarmSet").value
+
+  document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(input)}`
+  }
 
 // DO NOT EDIT BELOW HERE
 
