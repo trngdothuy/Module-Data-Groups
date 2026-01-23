@@ -16,21 +16,36 @@ function calculateMode(list) {
     if (typeof num !== "number") {
       continue;
     }
-
-    freqs.set(num, (freqs.get(num) || 0) + 1);
-  }
-
-  // Find the value with the highest frequency
-  let maxFreq = 0;
-  let mode;
-  for (let [num, freq] of freqs) {
-    if (freq > maxFreq) {
-      mode = num;
-      maxFreq = freq;
+    if (freqs.get(num)) {
+      freqs.set(num, freqs.get(num) + 1)
+    } else {
+      freqs.set(num, 1);
     }
+    // freqs.set(num, (freqs.get(num) || 0) + 1);
   }
+  
+  if (freqs.size === 0) {
+    return NaN
+  }
+      
+  // Find the value with the highest frequency
+  // let maxFreq = 0;
+  // let mode;
+  // for (let [num, freq] of freqs) {
+  //   if (freq > maxFreq) {
+  //     mode = num;
+  //     maxFreq = freq;
+  //   }
+  // }
+  const sortFreg = new Map([...freqs.entries()].sort((a, b) => b[1] - a[1]))
+  // change sortFreg from Map to Array => choose the 1st pair => choose the 1 element (num)
+  return [...sortFreg.entries()][0][0]
 
-  return maxFreq === 0 ? NaN : mode;
+  // console.log(freqs.sort((a, b) => a[freg] - b[freg]))
+
+  // return maxFreq === 0 ? NaN : mode;
 }
 
 module.exports = calculateMode;
+
+// console.log(calculateMode([2, 4, 1, 2, 3, 2, 1]))
