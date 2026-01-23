@@ -8,7 +8,8 @@ function totalTill(till) {
   let total = 0;
 
   for (const [coin, quantity] of Object.entries(till)) {
-    total += coin * quantity;
+    const coinWithoutP = coin.replace('p', '')
+    total += coinWithoutP * quantity;
   }
 
   return `£${total / 100}`;
@@ -22,10 +23,17 @@ const till = {
 };
 const totalAmount = totalTill(till);
 
+module.exports = totalAmount
+
 // a) What is the target output when totalTill is called with the till object
+// Answer: £NaN
 
 // b) Why do we need to use Object.entries inside the for...of loop in this function?
+// Answer: To change an object to an array so we can loop through it with each pair of [coin, quantity]
 
 // c) What does coin * quantity evaluate to inside the for...of loop?
+// Answer: To calculate the sum of each kind of coin
 
 // d) Write a test for this function to check it works and then fix the implementation of totalTill
+// Answer: Test wrote in till.test.js
+
