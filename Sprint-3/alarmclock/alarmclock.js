@@ -13,9 +13,16 @@ function timeFormated(seconds) {
 
 function setAlarm() {
   
-  const input = document.getElementById("alarmSet").value
+  let input = document.getElementById("alarmSet").value
+  const time = timeFormated(input)
 
-  document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(input)}`
+  document.getElementById("timeRemaining").innerText = `Time Remaining: ${time}`
+
+  // When one second passes, Then the "Time Remaining" title should decrement by 1 second
+  setInterval(() => {
+    console.log(timeFormated(input - 1))
+    document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(input -= 1)}`
+  }, 1000)
   }
 
 // DO NOT EDIT BELOW HERE
