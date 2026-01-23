@@ -47,5 +47,3 @@ function calculateMode(list) {
 }
 
 module.exports = calculateMode;
-
-// console.log(calculateMode([2, 4, 1, 2, 3, 2, 1]))
