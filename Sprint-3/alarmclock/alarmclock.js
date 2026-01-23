@@ -21,9 +21,10 @@ function setAlarm() {
   const interval = setInterval(() => {
     console.log(timeFormated(timeRemaining - 1))
 
-    // Time = 00:00, alarm sound play continuously
+    // Time = 00:00, alarm sound play continuously and change background color
     if (timeRemaining === 0) {
     playAlarm();
+    document.body.style.backgroundColor = "red";
     clearInterval(interval)
   } else {
     // 1 second passes, "Time Remaining" decrement by 1
