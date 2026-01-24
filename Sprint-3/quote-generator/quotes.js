@@ -19,7 +19,7 @@ function checkboxClicked() {
   checkbox.addEventListener("change", () => {
     if (checkbox.checked) {
       document.querySelector(".quote-card #checkbox label").innerHTML = "<i>auto-play:ON</i>"
-      interval = setInterval(() => generateQuote(quotes), 3000)
+      interval = setInterval(() => generateQuote(quotes), 60000)
     } else {
       document.querySelector(".quote-card #checkbox label").innerHTML = "auto-play:OFF"
       clearInterval(interval)
