@@ -3,7 +3,7 @@ function generateQuote(choices) {
   let quote = document.getElementById("quote")
   quote.innerHTML = selected.quote;
   let author = document.getElementById("author")
-  author.innerHTML = selected.author
+  author.innerHTML = `_${selected.author}_`
 }
 
 // DO NOT EDIT BELOW HERE
