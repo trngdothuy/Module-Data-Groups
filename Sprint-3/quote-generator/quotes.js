@@ -13,6 +13,19 @@ function buttonClicked() {
 })
 }
 
+let interval;
+function checkboxClicked() {
+  const checkbox = document.querySelector("#checkbox input")
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      document.querySelector(".quote-card #checkbox label").innerHTML = "<i>auto-play:ON</i>"
+      interval = setInterval(() => generateQuote(quotes), 3000)
+    } else {
+      document.querySelector(".quote-card #checkbox label").innerHTML = "auto-play:OFF"
+      clearInterval(interval)
+    }
+  })
+}
 
 // DO NOT EDIT BELOW HERE
 
@@ -510,4 +523,5 @@ const quotes = [
 
 console.log(pickFromArray(quotes))
 generateQuote(quotes)
-setInterval(buttonClicked, 1000)
+buttonClicked()
+checkboxClicked()

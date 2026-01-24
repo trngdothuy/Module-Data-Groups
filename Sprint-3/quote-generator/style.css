@@ -81,3 +81,8 @@ body {
 #new-quote:active {
   transform: scale(0.98);
 }
+
+/* Checkbox */
+#checkbox {
+    padding-bottom: 5px;
+}
