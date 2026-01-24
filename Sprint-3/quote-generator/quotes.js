@@ -1,3 +1,11 @@
+function generateQuote(choices) {
+  let selected = pickFromArray(choices)
+  let quote = document.getElementById("quote")
+  quote.innerHTML = selected.quote;
+  let author = document.getElementById("author")
+  author.innerHTML = selected.author
+}
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -491,3 +499,5 @@ const quotes = [
 ];
 
 // call pickFromArray with the quotes array to check you get a random quote
+
+generateQuote(quotes)
