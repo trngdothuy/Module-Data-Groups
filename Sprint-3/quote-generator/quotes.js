@@ -6,6 +6,14 @@ function generateQuote(choices) {
   author.innerHTML = `_${selected.author}_`
 }
 
+function buttonClicked() {
+  const button = document.getElementById("new-quote")
+  button.addEventListener("click", () => {
+  generateQuote(quotes)
+})
+}
+
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -500,8 +508,6 @@ const quotes = [
 
 // call pickFromArray with the quotes array to check you get a random quote
 
+console.log(pickFromArray(quotes))
 generateQuote(quotes)
-const button = document.getElementById("new-quote")
-button.addEventListener("click", () => {
-  generateQuote(quotes)
-})
+setInterval(buttonClicked, 1000)
