@@ -501,3 +501,7 @@ const quotes = [
 // call pickFromArray with the quotes array to check you get a random quote
 
 generateQuote(quotes)
+const button = document.getElementById("new-quote")
+button.addEventListener("click", () => {
+  generateQuote(quotes)
+})
