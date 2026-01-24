@@ -1,3 +1,6 @@
+let flag = false;
+let interval = 0;
+
 function timeFormated(seconds) {
   function pad(num) {
   return num.toString().padStart(2, "0");
@@ -12,26 +15,31 @@ function timeFormated(seconds) {
 }
 
 function setAlarm() {
+  if (flag === true) {
+    clearInterval(interval);
+    flag = false
+  }
 
   const input = document.getElementById("alarmSet").value
   let timeRemaining = input 
 
   document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(input)}`
-
-  const interval = setInterval(() => {
+  
+  flag = true
+  interval = setInterval(() => {
     console.log(timeFormated(timeRemaining - 1))
 
     // Time = 00:00, alarm sound play continuously and change background color
     if (timeRemaining === 0) {
     playAlarm();
     document.body.style.backgroundColor = "red";
-    clearInterval(interval)
+    // clearInterval(interval)
   } else {
     // 1 second passes, "Time Remaining" decrement by 1
     document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(timeRemaining -= 1)}`
   }
   }, 1000)
-  }
+}
   
   
 
@@ -41,11 +49,11 @@ var audio = new Audio("alarmsound.mp3");
 
 function setup() {
   document.getElementById("set").addEventListener("click", () => {
-    setAlarm();
+      setAlarm();
   });
 
   document.getElementById("stop").addEventListener("click", () => {
-    pauseAlarm();
+    pauseAlarm();    
   });
 }
 
@@ -55,6 +63,9 @@ function playAlarm() {
 
 function pauseAlarm() {
   audio.pause();
+  document.getElementById("timeRemaining").innerText = `Time Remaining: ${timeFormated(0)}`
+  flag = false;
+  clearInterval(interval)
 }
 
 window.onload = setup;
