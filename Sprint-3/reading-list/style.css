@@ -124,6 +124,10 @@ body {
   background-color: red;
 }
 
+.green {
+  background-color: green;
+}
+
 .addArticle {
   margin-bottom: 10px;
 }
@@ -156,4 +160,15 @@ body {
   .navbar-brand > img {
     max-height: 80px;
   }
+}
+
+div {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 200px;
+  height: 300px;
 }
