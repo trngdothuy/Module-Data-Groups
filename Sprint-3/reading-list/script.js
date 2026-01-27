@@ -30,7 +30,7 @@ books.forEach((e) => {
   readingList.appendChild(readingItem);
 
   readingItem.innerHTML = `<div>
-  ${e.title} by ${e.author}
+  <b>${e.title}</b> by ${e.author}
   <img src=${e.bookCoverImage}>
   </div>`
 

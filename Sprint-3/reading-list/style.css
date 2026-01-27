@@ -121,11 +121,11 @@ body {
 }
 
 .red {
-  background-color: red;
+  background-color: #ce4131;
 }
 
 .green {
-  background-color: green;
+  background-color: #87ca8a;
 }
 
 .addArticle {
@@ -171,4 +171,9 @@ div {
 img {
   width: 200px;
   height: 300px;
+  margin-top: 10px;
+}
+
+h1 {
+  text-align: center;
 }
