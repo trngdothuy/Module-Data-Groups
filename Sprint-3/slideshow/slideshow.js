@@ -41,15 +41,15 @@ function forward() {
 
 console.log(countdownCard.innerText)
 
-let secondLeft = 3
+let secondLeft = 5
 let interval = setInterval(() => {
-    if (!countdownCard.hidden && secondLeft >= 0) {
-        if (secondLeft === 0) {
+    if (!countdownCard.hidden && secondLeft >= 1) {
+        if (secondLeft === 1) {
             countdownCard.innerText = "Next photo showing now"
-            secondLeft = 3
+            secondLeft = 5
         } else {
             secondLeft = secondLeft - 1;
-            countdownCard.innerText = `Next photo in 00:0${secondLeft + 1}`
+            countdownCard.innerText = `Next photo in 00:0${secondLeft}`
     }}}, 1000)
 
 backwardButton.addEventListener("click", backward)
@@ -58,12 +58,12 @@ forwardButton.addEventListener("click", forward)
 
 autoBackwardButton.addEventListener("click", () => {
     countdownCard.hidden = false;
-    interval = setInterval(backward, 3000)
+    interval = setInterval(backward, 5000)
 })
 
 autoForwardButton.addEventListener("click", () => {
     countdownCard.hidden = false;
-    interval = setInterval(forward, 3000)
+    interval = setInterval(forward, 5000)
 })
 
 stopButton.addEventListener("click", () => {
