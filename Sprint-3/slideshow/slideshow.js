@@ -6,9 +6,10 @@ const images = [
 
 
 // Write your code here
-// TODO: Make forward, backward button active
+// TODO: Make forward button active
 
 const backwardButton = document.getElementById("backward-btn");
+const forwardButton = document.getElementById("forward-btn");
 const carouselImg = document.getElementById("carousel-img")
 let currentPhotoIndex = 0;
 
@@ -17,6 +18,16 @@ backwardButton.addEventListener("click", () => {
         currentPhotoIndex = images.length - 1;
     } else {
         currentPhotoIndex = currentPhotoIndex - 1;
+    }
+    carouselImg.src = images[currentPhotoIndex]
+})
+
+forwardButton.addEventListener("click", () => {
+    console.log(currentPhotoIndex)
+    if (currentPhotoIndex === images.length - 1) {
+        currentPhotoIndex = 0;
+    } else {
+        currentPhotoIndex++;
     }
     carouselImg.src = images[currentPhotoIndex]
 })
