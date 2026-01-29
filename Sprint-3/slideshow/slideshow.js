@@ -16,7 +16,6 @@ const autoForwardButton = document.getElementById("auto-forward-btn");
 const stopButton = document.getElementById("stop-btn");
 const countdownCard = document.getElementById("countdown-card")
 
-
 const carouselImg = document.getElementById("carousel-img")
 let currentPhotoIndex = 0;
 
@@ -30,7 +29,6 @@ function backward() {
 }
 
 function forward() {
-    let secondLeft = 3;
     if (currentPhotoIndex === images.length - 1) {
         currentPhotoIndex = 0;
     } else {
@@ -69,4 +67,5 @@ autoForwardButton.addEventListener("click", () => {
 stopButton.addEventListener("click", () => {
     clearInterval(interval)
     countdownCard.hidden = true;
+    secondLeft = 5
 })
