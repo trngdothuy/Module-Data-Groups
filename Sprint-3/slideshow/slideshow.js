@@ -7,7 +7,6 @@ const images = [
 
 
 // Write your code here
-// TODO: Add UI for delay time
 
 const backwardButton = document.getElementById("backward-btn");
 const forwardButton = document.getElementById("forward-btn");
@@ -37,7 +36,11 @@ function forward() {
     carouselImg.src = images[currentPhotoIndex]
 }
 
-console.log(countdownCard.innerText)
+function resetInterval() {
+    clearInterval(interval)
+    countdownCard.hidden = true;
+    secondLeft = 5
+}
 
 let secondLeft = 5
 let interval = setInterval(() => {
@@ -50,9 +53,15 @@ let interval = setInterval(() => {
             countdownCard.innerText = `Next photo in 00:0${secondLeft}`
     }}}, 1000)
 
-backwardButton.addEventListener("click", backward)
+backwardButton.addEventListener("click", () => {
+    resetInterval();
+    backward()
+})
 
-forwardButton.addEventListener("click", forward)
+forwardButton.addEventListener("click", () => {
+    resetInterval();
+    forward();
+})
 
 autoBackwardButton.addEventListener("click", () => {
     countdownCard.hidden = false;
@@ -64,8 +73,4 @@ autoForwardButton.addEventListener("click", () => {
     interval = setInterval(forward, 5000)
 })
 
-stopButton.addEventListener("click", () => {
-    clearInterval(interval)
-    countdownCard.hidden = true;
-    secondLeft = 5
-})
+stopButton.addEventListener("click", resetInterval)
