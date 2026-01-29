@@ -6,18 +6,18 @@ const images = [
 
 
 // Write your code here
-// TODO: Make auto-forward button
+// TODO: Add UI for delay time
 
 const backwardButton = document.getElementById("backward-btn");
 const forwardButton = document.getElementById("forward-btn");
 const autoBackwardButton = document.getElementById("auto-backward-btn");
 const autoForwardButton = document.getElementById("auto-forward-btn");
 const stopButton = document.getElementById("stop-btn");
+const countdownCard = document.getElementById("countdown-card")
 
 
 const carouselImg = document.getElementById("carousel-img")
 let currentPhotoIndex = 0;
-let interval = 0;
 
 function backward() {
     if (currentPhotoIndex === 0) {
@@ -29,6 +29,7 @@ function backward() {
 }
 
 function forward() {
+    let secondLeft = 3;
     if (currentPhotoIndex === images.length - 1) {
         currentPhotoIndex = 0;
     } else {
@@ -37,20 +38,34 @@ function forward() {
     carouselImg.src = images[currentPhotoIndex]
 }
 
+console.log(countdownCard.innerText)
+
+let secondLeft = 3
+let interval = setInterval(() => {
+    if (!countdownCard.hidden && secondLeft >= 0) {
+        if (secondLeft === 0) {
+            countdownCard.innerText = "Next photo showing now"
+            secondLeft = 3
+        } else {
+            secondLeft = secondLeft - 1;
+            countdownCard.innerText = `Next photo in 00:0${secondLeft + 1}`
+    }}}, 1000)
+
 backwardButton.addEventListener("click", backward)
 
 forwardButton.addEventListener("click", forward)
 
 autoBackwardButton.addEventListener("click", () => {
-    backward()
+    countdownCard.hidden = false;
     interval = setInterval(backward, 3000)
 })
 
 autoForwardButton.addEventListener("click", () => {
-    forward()
+    countdownCard.hidden = false;
     interval = setInterval(forward, 3000)
 })
 
 stopButton.addEventListener("click", () => {
     clearInterval(interval)
+    countdownCard.hidden = true;
 })
