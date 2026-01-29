@@ -12,6 +12,7 @@ const backwardButton = document.getElementById("backward-btn");
 const forwardButton = document.getElementById("forward-btn");
 const autoBackwardButton = document.getElementById("auto-backward-btn");
 const autoForwardButton = document.getElementById("auto-forward-btn");
+const stopButton = document.getElementById("stop-btn");
 
 
 const carouselImg = document.getElementById("carousel-img")
@@ -48,4 +49,8 @@ autoBackwardButton.addEventListener("click", () => {
 autoForwardButton.addEventListener("click", () => {
     forward()
     interval = setInterval(forward, 3000)
+})
+
+stopButton.addEventListener("click", () => {
+    clearInterval(interval)
 })
