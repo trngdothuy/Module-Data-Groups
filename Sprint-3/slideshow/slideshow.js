@@ -10,6 +10,9 @@ const images = [
 
 const backwardButton = document.getElementById("backward-btn");
 const forwardButton = document.getElementById("forward-btn");
+const autoBackwardButton = document.getElementById("auto-backward-btn");
+
+
 const carouselImg = document.getElementById("carousel-img")
 let currentPhotoIndex = 0;
 
@@ -35,3 +38,7 @@ function forward() {
 backwardButton.addEventListener("click", backward)
 
 forwardButton.addEventListener("click", forward)
+
+autoBackwardButton.addEventListener("click", () => {
+    setInterval(backward, 3000)
+})
