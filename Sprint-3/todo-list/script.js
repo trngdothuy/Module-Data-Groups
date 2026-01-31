@@ -22,8 +22,31 @@ function populateTodoList(todos) {
     taskDiv.append(task, completedButton, deleteButton)
     list.append(taskDiv)
 
-    // addEventListener 2 buttons
+    completedButton.addEventListener("click", () => {
+      if (completedButton.textContent === "☑️") {
+        task.classList.add("completed")
+        completedButton.textContent = "✅"
+        item.completed = 'true'
+      } else {
+        task.classList.remove("completed")
+        completedButton.textContent = "☑️"
+        item.completed = 'false'
+      }
+    })
+
+    deleteButton.addEventListener("click", () => {
+      console.log("button clicked")
+      const index = todos.indexOf(item)
+      if (index > -1) {
+        todos.splice(index, 1)
+        taskDiv.innerText = ""
+      }
+    })
   })
+}
+
+function completedButtonClick() {
+  
 }
 
 // These are the same todos that currently display in the HTML
