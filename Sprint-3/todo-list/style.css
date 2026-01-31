@@ -1,1 +1,34 @@
+/* * Write your CSS in here * */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#todo-list {
+    margin: 5px;
+}
+
+#task-card {
+    display: flex;
+    flex-direction: row;
+}
+
+#completed-button {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color: green;
+    background-color: white;
+    border: white;
+}
+
+#delete-button {
+    margin-bottom: 5px;
+    color: red;
+    background-color: white;
+    border: white;
+}
+
+.completed {
+    text-decoration: line-through;
+}
 

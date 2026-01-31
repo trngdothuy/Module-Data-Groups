@@ -1,6 +1,27 @@
 function populateTodoList(todos) {
   let list = document.getElementById("todo-list");
   // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
+  todos.forEach((item) => {
+    let taskDiv = document.createElement("div")
+    taskDiv.id = "task-card"
+    let task = document.createElement("li")
+    let completedButton = document.createElement('button')
+    completedButton.id = 'completed-button'
+    let deleteButton = document.createElement('button')
+    deleteButton.id = 'delete-button'
+
+    task.textContent = item.task
+    if (!item.completed) {
+      completedButton.textContent = "☑️"
+    } else {
+      task.classList.add("completed")
+      completedButton.textContent = "✅"
+    }
+    deleteButton.textContent = '❌'
+
+    taskDiv.append(task, completedButton, deleteButton)
+    list.append(taskDiv)
+  })
 }
 
 // These are the same todos that currently display in the HTML
