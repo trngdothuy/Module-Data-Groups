@@ -21,6 +21,8 @@ function populateTodoList(todos) {
 
     taskDiv.append(task, completedButton, deleteButton)
     list.append(taskDiv)
+
+    // addEventListener 2 buttons
   })
 }
 
