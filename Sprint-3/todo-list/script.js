@@ -45,10 +45,6 @@ function populateTodoList(todos) {
   })
 }
 
-function completedButtonClick() {
-  
-}
-
 // These are the same todos that currently display in the HTML
 // You will want to remove the ones in the current HTML after you have created them using JavaScript
 let todos = [
