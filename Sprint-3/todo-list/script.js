@@ -41,7 +41,7 @@ function displayTodo(item) {
     task.classList.add("completed")
     completedButton.textContent = "✅"
   }
-  deleteButton.textContent = '❌'
+  deleteButton.textContent = '🗑️'
 
   // add to HTML
   taskDiv.append(task, completedButton, deleteButton, deadline)
@@ -70,7 +70,7 @@ function displayTodo(item) {
     }
     })
 
-  // ❌ button clicked
+  // 🗑️ button clicked
   deleteButton.addEventListener("click", () => {
     deleteTodo(item.task, todos, taskDiv)
   })
