@@ -16,12 +16,25 @@ function displayTodo(item) {
   let deleteButton = document.createElement('button')
   deleteButton.id = 'delete-button'
 
-  // console.log(deadline)
-  // console.log(item.deadline)
   task.textContent = item.task
+
+  // display deadline countdown
   if (item.deadline) {
-      deadline.innerHTML = item.deadline.value
+    const deadlineDate = new Date(item.deadline.value).getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const gap = deadlineDate - now; // miliseconds
+      const daysLeft = Math.floor(gap / (1000 * 60 * 60 * 24) + 1)
+      if (Number(daysLeft) <= 0) {
+        clearInterval(countdown);
+        deadline.innerHTML = 'EXPIRED'
+      } else {
+        deadline.innerHTML = `${daysLeft} day(s) left`
+      }
+    }, 1000)
   }
+
+  // set 2 buttons each task
   if (!item.completed) {
     completedButton.textContent = "☑️"
   } else {
@@ -30,9 +43,11 @@ function displayTodo(item) {
   }
   deleteButton.textContent = '❌'
 
+  // add to HTML
   taskDiv.append(task, completedButton, deleteButton, deadline)
   list.append(taskDiv)
 
+  // ✅ button clicked
   completedButton.addEventListener("click", () => {
     const index = todos.findIndex(e => e.task === item.task)
     if (completedButton.textContent === "☑️") {
@@ -55,6 +70,7 @@ function displayTodo(item) {
     }
     })
 
+  // ❌ button clicked
   deleteButton.addEventListener("click", () => {
     deleteTodo(item.task, todos, taskDiv)
   })
