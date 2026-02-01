@@ -14,9 +14,8 @@ form {
     margin-bottom: 3px;
 }
 
-input {
+#todo-input {
     margin-bottom: 5px;
-    width: 15rem;
 }
 
 #todo-list {
