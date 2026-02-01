@@ -41,7 +41,12 @@ function displayTodo(item) {
     })
 
   deleteButton.addEventListener("click", () => {
-    const index = todos.indexOf(item)
+    deleteTodo(item, todos, taskDiv)
+  })
+}
+
+function deleteTodo(item, todos, taskDiv) {
+  const index = todos.indexOf(item)
     if (index > -1) {
       todos.splice(index, 1)
     } else {
@@ -49,7 +54,6 @@ function displayTodo(item) {
     }
     taskDiv.innerText = ""
     console.log(todos)
-  })
 }
 
 // These are the same todos that currently display in the HTML
@@ -79,7 +83,7 @@ addTodoButton.addEventListener("click", addNewTodo)
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
   // Write your code here...
-  
+
 }
 
 const removeAllButton = document.getElementById("remove-all-completed");
