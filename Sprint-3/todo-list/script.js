@@ -79,4 +79,8 @@ addTodoButton.addEventListener("click", addNewTodo)
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
   // Write your code here...
+  
 }
+
+const removeAllButton = document.getElementById("remove-all-completed");
+removeAllButton.addEventListener("click", deleteAllCompletedTodos)
