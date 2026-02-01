@@ -27,6 +27,10 @@ form {
     flex-direction: row;
 }
 
+span {
+    margin-left: 5px;
+}
+
 #completed-button {
     margin-left: 5px;
     margin-bottom: 5px;

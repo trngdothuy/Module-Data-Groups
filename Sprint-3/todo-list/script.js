@@ -10,13 +10,14 @@ function displayTodo(item) {
   let taskDiv = document.createElement("div")
   taskDiv.id = "task-card"
   let task = document.createElement("li")
-  let deadline = document.createElement("div")
+  let taskName = document.createElement("span")
+  let deadline = document.createElement("span")
   let completedButton = document.createElement('button')
   completedButton.id = 'completed-button'
   let deleteButton = document.createElement('button')
   deleteButton.id = 'delete-button'
 
-  task.textContent = item.task
+  taskName = item.task
 
   // display deadline countdown
   if (item.deadline) {
@@ -29,9 +30,11 @@ function displayTodo(item) {
         clearInterval(countdown);
         deadline.innerHTML = 'EXPIRED'
       } else {
-        deadline.innerHTML = `${daysLeft} day(s) left`
+        deadline.innerHTML = `(${daysLeft} day(s) left)`
       }
     }, 1000)
+  } else {
+    deadline.hidden = true
   }
 
   // set 2 buttons each task
@@ -44,7 +47,8 @@ function displayTodo(item) {
   deleteButton.textContent = '🗑️'
 
   // add to HTML
-  taskDiv.append(task, completedButton, deleteButton, deadline)
+  task.append(taskName, deadline, completedButton, deleteButton)
+  taskDiv.append(task)
   list.append(taskDiv)
 
   // ✅ button clicked
