@@ -37,14 +37,18 @@ function displayTodo(item) {
         completedButton.textContent = "☑️"
         item.completed = 'false'
       }
+      console.log(todos)
     })
 
   deleteButton.addEventListener("click", () => {
     const index = todos.indexOf(item)
     if (index > -1) {
       todos.splice(index, 1)
-      taskDiv.innerText = ""
+    } else {
+      todos.pop()
     }
+    taskDiv.innerText = ""
+    console.log(todos)
   })
 }
 
@@ -62,10 +66,11 @@ function addNewTodo(event) {
   // The code below prevents the page from refreshing when we click the 'Add Todo' button.
   event.preventDefault();
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
-  const input = document.querySelector("input").value
-  todos.push({ task: input, completed: false },
-  populateTodoList(todos)  
-  )
+  const input = document.querySelector("input")
+  todos.push({ task: input.value, completed: false })
+  console.log(todos)
+  displayTodo({ task: input.value, completed: false }) 
+  input.value = ""
 }
 
 const addTodoButton = document.getElementById("add-todo");
