@@ -28,32 +28,40 @@ function displayTodo(item) {
     list.append(taskDiv)
 
   completedButton.addEventListener("click", () => {
-      if (completedButton.textContent === "☑️") {
-        task.classList.add("completed")
-        completedButton.textContent = "✅"
-        item.completed = 'true'
-      } else {
-        task.classList.remove("completed")
-        completedButton.textContent = "☑️"
-        item.completed = 'false'
-      }
-      console.log(todos)
+    const index = todos.findIndex(e => e.task === item.task)
+    if (completedButton.textContent === "☑️") {
+      task.classList.add("completed")
+      completedButton.textContent = "✅"
+
+      if (index > -1) {
+        todos[index]["completed"] = 'true'
+      } else (
+        console.log("not found this task in the todos")
+      )
+    } else {
+      task.classList.remove("completed")
+      completedButton.textContent = "☑️"
+      if (index > -1) {
+        todos[index]["completed"] = 'false'
+      } else (
+        console.log("not found this task in the todos")
+      )
+    }
     })
 
   deleteButton.addEventListener("click", () => {
-    deleteTodo(item, todos, taskDiv)
+    deleteTodo(item.task, todos, taskDiv)
   })
 }
 
-function deleteTodo(item, todos, taskDiv) {
-  const index = todos.indexOf(item)
+function deleteTodo(taskName, todos, taskDiv) {
+  const index = todos.findIndex(e => e.task === taskName)
     if (index > -1) {
       todos.splice(index, 1)
     } else {
-      todos.pop()
+      console.log("not found this task in the todos")
     }
-    taskDiv.innerText = ""
-    console.log(todos)
+    taskDiv.remove()
 }
 
 // These are the same todos that currently display in the HTML
@@ -72,7 +80,6 @@ function addNewTodo(event) {
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
   const input = document.querySelector("input")
   todos.push({ task: input.value, completed: false })
-  console.log(todos)
   displayTodo({ task: input.value, completed: false }) 
   input.value = ""
 }
@@ -83,7 +90,14 @@ addTodoButton.addEventListener("click", addNewTodo)
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
   // Write your code here...
-
+  let taskCard = document.querySelectorAll("div #task-card")
+  taskCard = Object.entries(taskCard)
+  for (let item of taskCard) {
+    if (item[1]["firstChild"]["className"] === "completed") {
+      let taskName = item[1]["firstChild"]["innerHTML"]
+      deleteTodo(taskName, todos, item[1])
+    }
+  }
 }
 
 const removeAllButton = document.getElementById("remove-all-completed");
