@@ -1,16 +1,21 @@
 function populateTodoList(todos) {
-  let list = document.getElementById("todo-list");
   // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
   todos.forEach((item) => {
-    let taskDiv = document.createElement("div")
-    taskDiv.id = "task-card"
-    let task = document.createElement("li")
-    let completedButton = document.createElement('button')
-    completedButton.id = 'completed-button'
-    let deleteButton = document.createElement('button')
-    deleteButton.id = 'delete-button'
+    displayTodo(item)
+  })
+}
 
-    task.textContent = item.task
+function displayTodo(item) {
+  let list = document.getElementById("todo-list");
+  let taskDiv = document.createElement("div")
+  taskDiv.id = "task-card"
+  let task = document.createElement("li")
+  let completedButton = document.createElement('button')
+  completedButton.id = 'completed-button'
+  let deleteButton = document.createElement('button')
+  deleteButton.id = 'delete-button'
+
+  task.textContent = item.task
     if (!item.completed) {
       completedButton.textContent = "☑️"
     } else {
@@ -22,7 +27,7 @@ function populateTodoList(todos) {
     taskDiv.append(task, completedButton, deleteButton)
     list.append(taskDiv)
 
-    completedButton.addEventListener("click", () => {
+  completedButton.addEventListener("click", () => {
       if (completedButton.textContent === "☑️") {
         task.classList.add("completed")
         completedButton.textContent = "✅"
@@ -34,14 +39,12 @@ function populateTodoList(todos) {
       }
     })
 
-    deleteButton.addEventListener("click", () => {
-      console.log("button clicked")
-      const index = todos.indexOf(item)
-      if (index > -1) {
-        todos.splice(index, 1)
-        taskDiv.innerText = ""
-      }
-    })
+  deleteButton.addEventListener("click", () => {
+    const index = todos.indexOf(item)
+    if (index > -1) {
+      todos.splice(index, 1)
+      taskDiv.innerText = ""
+    }
   })
 }
 
@@ -59,7 +62,14 @@ function addNewTodo(event) {
   // The code below prevents the page from refreshing when we click the 'Add Todo' button.
   event.preventDefault();
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
+  const input = document.querySelector("input").value
+  todos.push({ task: input, completed: false },
+  populateTodoList(todos)  
+  )
 }
+
+const addTodoButton = document.getElementById("add-todo");
+addTodoButton.addEventListener("click", addNewTodo)
 
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
 function deleteAllCompletedTodos() {
