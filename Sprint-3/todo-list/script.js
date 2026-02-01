@@ -10,22 +10,28 @@ function displayTodo(item) {
   let taskDiv = document.createElement("div")
   taskDiv.id = "task-card"
   let task = document.createElement("li")
+  let deadline = document.createElement("div")
   let completedButton = document.createElement('button')
   completedButton.id = 'completed-button'
   let deleteButton = document.createElement('button')
   deleteButton.id = 'delete-button'
 
+  // console.log(deadline)
+  // console.log(item.deadline)
   task.textContent = item.task
-    if (!item.completed) {
-      completedButton.textContent = "☑️"
-    } else {
-      task.classList.add("completed")
-      completedButton.textContent = "✅"
-    }
-    deleteButton.textContent = '❌'
+  if (item.deadline) {
+      deadline.innerHTML = item.deadline.value
+  }
+  if (!item.completed) {
+    completedButton.textContent = "☑️"
+  } else {
+    task.classList.add("completed")
+    completedButton.textContent = "✅"
+  }
+  deleteButton.textContent = '❌'
 
-    taskDiv.append(task, completedButton, deleteButton)
-    list.append(taskDiv)
+  taskDiv.append(task, completedButton, deleteButton, deadline)
+  list.append(taskDiv)
 
   completedButton.addEventListener("click", () => {
     const index = todos.findIndex(e => e.task === item.task)
@@ -78,9 +84,10 @@ function addNewTodo(event) {
   // The code below prevents the page from refreshing when we click the 'Add Todo' button.
   event.preventDefault();
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
-  const input = document.querySelector("input")
-  todos.push({ task: input.value, completed: false })
-  displayTodo({ task: input.value, completed: false }) 
+  const input = document.getElementById("todo-input")
+  const deadline = document.getElementById("deadline")
+  todos.push({ task: input.value, completed: false, deadline: deadline })
+  displayTodo({ task: input.value, completed: false, deadline: deadline }) 
   input.value = ""
 }
 
