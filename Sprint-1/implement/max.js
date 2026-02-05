@@ -1,6 +1,6 @@
 function findMax(elements) {
     if (elements.length === 0) {
-        return "-Infinity"
+        return -Infinity
     } else if (elements.length === 1) {
         return elements[0]
     } else {
