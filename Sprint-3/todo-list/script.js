@@ -109,6 +109,7 @@ function addNewTodo(event) {
   todos.push({ task: input.value, completed: false, deadline: deadline })
   displayTodo({ task: input.value, completed: false, deadline: deadline }) 
   input.value = ""
+  deadline.value = ""
 }
 
 const addTodoButton = document.getElementById("add-todo");
