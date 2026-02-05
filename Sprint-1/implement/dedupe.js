@@ -4,11 +4,15 @@ function dedupe(elements) {
     }
 
     let newElements = []
-    for (i = 0; i < elements.length; i++) {
-        if (!newElements.includes(elements[i])) {
-            newElements.push(elements[i])
-        }
-    }
+    // for (i = 0; i < elements.length; i++) {
+    //     if (!newElements.includes(elements[i])) {
+    //         newElements.push(elements[i])
+    //     }
+    // }
+
+    newElements = elements.filter((element, index) => {
+        return elements.indexOf(element) == index
+    })
 
     return newElements
 }
