@@ -1,1 +1,52 @@
+/* * Write your CSS in here * */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+#todo-input {
+    margin-bottom: 5px;
+}
+
+#todo-list {
+    margin: 5px;
+}
+
+#task-card {
+    display: flex;
+    flex-direction: row;
+}
+
+span {
+    margin-left: 5px;
+}
+
+#completed-button {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color: green;
+    background-color: white;
+    border: white;
+}
+
+#delete-button {
+    margin-bottom: 5px;
+    color: red;
+    background-color: white;
+    border: white;
+}
+
+.completed {
+    text-decoration: line-through;
+}
 

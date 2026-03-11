@@ -1,1 +1,11 @@
-/** Write your CSS in here **/
+/* * Write your CSS in here * */
+.container {
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+}
+
+#task-card {
+    display: flex;
+    flex-direction: column;
+}
