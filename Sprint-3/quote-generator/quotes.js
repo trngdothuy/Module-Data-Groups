@@ -1,3 +1,32 @@
+function generateQuote(choices) {
+  let selected = pickFromArray(choices)
+  let quote = document.getElementById("quote")
+  quote.innerHTML = selected.quote;
+  let author = document.getElementById("author")
+  author.innerHTML = `_${selected.author}_`
+}
+
+function buttonClicked() {
+  const button = document.getElementById("new-quote")
+  button.addEventListener("click", () => {
+  generateQuote(quotes)
+})
+}
+
+let interval;
+function checkboxClicked() {
+  const checkbox = document.querySelector("#checkbox input")
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      document.querySelector(".quote-card #checkbox label").innerHTML = "<i>auto-play:ON</i>"
+      interval = setInterval(() => generateQuote(quotes), 60000)
+    } else {
+      document.querySelector(".quote-card #checkbox label").innerHTML = "auto-play:OFF"
+      clearInterval(interval)
+    }
+  })
+}
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -491,3 +520,8 @@ const quotes = [
 ];
 
 // call pickFromArray with the quotes array to check you get a random quote
+
+console.log(pickFromArray(quotes))
+generateQuote(quotes)
+buttonClicked()
+checkboxClicked()
